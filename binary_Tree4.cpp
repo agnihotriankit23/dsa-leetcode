@@ -126,7 +126,28 @@ int kthAncestor(Node* root, int k,int node){
     else return ans->data;
 }
 
-//
+//Maximum Sum of Non- adjacent Nodes
+pair<int,int> solve4(Node* root){
+    if(root==NULL){
+        pair<int,int> p= make_pair(0,0);
+        return p;
+    }
+
+    pair<int,int> left= solve4(root->left);
+    pair<int,int> right= solve4(root->right);
+
+
+    pair<int,int> ans;
+    ans.first= root->data + left.second + right.second;
+    ans.second= max(left.first,left.second)+max(right.first, right.second);
+
+    return ans;
+}
+int getMaxSum(Node* root){
+    pair<int,int > ans;
+    ans=solve(root);
+    return max(ans.first,ans.second);
+}
 
 
 int main(){
