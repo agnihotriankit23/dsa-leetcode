@@ -85,7 +85,7 @@ TreeNode<int>* flatten(TreeNode<int>* root)
         return newRoot;
     }
 
-    // Construct Binary Search Tree from Preorder Traversal
+// Construct Binary Search Tree from Preorder Traversal
     TreeNode* solve(vector<int> preorder,int min,int max,int& i){
         if(i>= preorder.size()){
             return NULL;
