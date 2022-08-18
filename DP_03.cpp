@@ -2,6 +2,7 @@
 using namespace std;
 
 // MAX SUM WITHOUT ADJACENTS
+//  House Robbery Problem
 class Solution
 {
 public:
