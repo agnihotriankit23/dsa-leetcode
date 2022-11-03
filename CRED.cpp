@@ -30,8 +30,10 @@ class Contact_Manager
     {
       int start = 0, end = Contact_List.size() - 1;
       int index;
+      
       transform(key.begin(), key.end(), key.begin(), ::tolower);
       sort(Contact_List.begin(), Contact_List.end(), comparator);
+      
       while(start <= end)
       {
         int mid = start + (end - start) / 2;
