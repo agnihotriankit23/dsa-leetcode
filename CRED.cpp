@@ -122,10 +122,10 @@ int main()
       cout << "2. PREFIX SEARCH\n";
 
       string search_choice;
-      cout << "\nChoice : ";
 
       while(true)
       {
+        cout << "\nChoice : ";
         cin >> search_choice;
         if(search_choice == "1" || search_choice == "2")
           break;
@@ -138,10 +138,10 @@ int main()
       cout << "3. Phone Number\n";
 
       string query;
-      cout << "\nChoice : ";
 
       while(true)
       {
+        cout << "\nChoice : ";
         cin >> query;
         if(query == "1" || query == "2" || query == "3")
           break;
