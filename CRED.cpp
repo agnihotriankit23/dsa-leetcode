@@ -36,6 +36,11 @@ class Contact_Manager
       transform(key.begin(), key.end(), key.begin(), ::tolower);
       
       if(is_updated[query]) sort(Contact_List.begin(), Contact_List.end(), comparator);
+      for(int i=0;i<3;i++){
+        if(i!=query){
+            is_updated[i]=true;
+        }
+      }
       is_updated[query] = false;
 
       while(start <= end)
@@ -67,7 +72,7 @@ class Contact_Manager
     {
       if(index == -1)
       {
-        cout << "\nTOTAL : " << 0 << endl;
+        cout << "TOTAL : " << 0 << endl;
         return;
       }
 
