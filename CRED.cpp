@@ -67,7 +67,7 @@ class Contact_Manager
     {
       if(index == -1)
       {
-        cout << "TOTAL : " << 0 << endl;
+        cout << "\nTOTAL : " << 0 << endl;
         return;
       }
 
