@@ -7,17 +7,11 @@ bool comparator(vector<string> &A, vector<string> &B)
   return A[Query] < B[Query];
 }
 
-
+vector<vector<string>> Contact_List;
 
 class Contact_Manager
 {
-  vector<vector<string>> Contact_List;
   public :
-    Contact_Manager()
-    {
-      Contact_List = vector<vector<string>>();
-    }
-
     void addContact()
     {
       string firstName, lastName, phone;
@@ -66,7 +60,7 @@ class Contact_Manager
 
         if(key == currentValue)
         {
-          cout << Contact_List[i][query] << endl;
+          cout << Contact_List[i][0]<<" " << Contact_List[i][1] << " " << Contact_List[i][2] << endl;
           total++;
         }
         else break;
@@ -79,7 +73,7 @@ class Contact_Manager
 
         if(key == currentValue)
         {
-          cout << Contact_List[i][query] << endl;
+          cout << Contact_List[i][0]<<" " << Contact_List[i][1] << " " << Contact_List[i][2] << endl;
           total++;
         }
         else break;
