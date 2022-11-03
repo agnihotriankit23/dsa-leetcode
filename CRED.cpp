@@ -28,7 +28,7 @@ class Contact_Manager
       Contact_List.push_back({firstName, lastName, phone});
     }
 
-    void SearchContact(string key,int query, int flag)
+    int SearchContact(string key,int query, int flag)
     {
       int start = 0, end = Contact_List.size() - 1;
       int index = -1;
@@ -61,37 +61,75 @@ class Contact_Manager
           end = mid - 1;
       }
 
-      int total = 0;
-      if(index != -1)
+      // int total = 0;
+      // if(index != -1)
+      // {
+      //   for(int i = index; i < Contact_List.size(); i++)
+      //   {
+      //     string currentValue = Contact_List[i][query].substr(0,key.size());
+      //     transform(currentValue.begin(), currentValue.end(), currentValue.begin(), ::tolower);
+
+      //     if(key == currentValue)
+      //     {
+      //       cout << Contact_List[i][0]<<" " << Contact_List[i][1] << " " << Contact_List[i][2] << endl;
+      //       total++;
+      //     }
+      //     else break;
+      //   }
+
+      //   for(int i = index - 1; i >= 0; i--)
+      //   {
+      //     string currentValue = Contact_List[i][query].substr(0,key.size());
+      //     transform(currentValue.begin(), currentValue.end(), currentValue.begin(), ::tolower);
+
+      //     if(key == currentValue)
+      //     {
+      //       cout << Contact_List[i][0]<<" " << Contact_List[i][1] << " " << Contact_List[i][2] << endl;
+      //       total++;
+      //     }
+      //     else break;
+      //   }
+        
+      //}
+
+      //cout << "\nTOTAL : " << total << endl;
+      return index;
+    }
+
+    void print_Search_Result(int index, int query, string key)
+    {
+      if(index == -1)
       {
-        for(int i = index; i < Contact_List.size(); i++)
-        {
-          string currentValue = Contact_List[i][query].substr(0,key.size());
-          transform(currentValue.begin(), currentValue.end(), currentValue.begin(), ::tolower);
-
-          if(key == currentValue)
-          {
-            cout << Contact_List[i][0]<<" " << Contact_List[i][1] << " " << Contact_List[i][2] << endl;
-            total++;
-          }
-          else break;
-        }
-
-        for(int i = index - 1; i >= 0; i--)
-        {
-          string currentValue = Contact_List[i][query].substr(0,key.size());
-          transform(currentValue.begin(), currentValue.end(), currentValue.begin(), ::tolower);
-
-          if(key == currentValue)
-          {
-            cout << Contact_List[i][0]<<" " << Contact_List[i][1] << " " << Contact_List[i][2] << endl;
-            total++;
-          }
-          else break;
-        }
+        cout << "TOTAL : " << 0 << endl;
+        return;
       }
 
-      cout << "\nTOTAL : " << total << endl;
+      int total = 0;
+      for(int i = index; i < Contact_List.size(); i++)
+      {
+        string currentValue = Contact_List[i][query].substr(0,key.size());
+        transform(currentValue.begin(), currentValue.end(), currentValue.begin(), ::tolower);
+
+        if(key == currentValue)
+        {
+          cout << Contact_List[i][0]<<" " << Contact_List[i][1] << " " << Contact_List[i][2] << endl;
+          total++;
+        }
+        else break;
+      }
+
+      for(int i = index - 1; i >= 0; i--)
+      {
+        string currentValue = Contact_List[i][query].substr(0,key.size());
+        transform(currentValue.begin(), currentValue.end(), currentValue.begin(), ::tolower);
+
+        if(key == currentValue)
+        {
+          cout << Contact_List[i][0]<<" " << Contact_List[i][1] << " " << Contact_List[i][2] << endl;
+          total++;
+        }
+        else break;
+      }
     }
   
 };
@@ -118,29 +156,31 @@ int main()
     }
     else if(choice == "2")
     {
+      cout << "\n1. COMPLETE SEARCH \n";
+      cout << "2. PREFIX SEARCH\n";
+
       string search_choice;
+      cout << "\nChoice : ";
+
       while(true)
       {
-        cout << "\n1. COMPLETE SEARCH \n";
-        cout << "2. PREFIX SEARCH\n";
-        cout << "\nChoice : ";
         cin >> search_choice;
-        
         if(search_choice == "1" || search_choice == "2")
           break;
         else 
           cout << "\nINVALID CHOICE!\n";
       }
 
+      cout << "\n1. First Name \n";
+      cout << "2. Last Name \n";
+      cout << "3. Phone Number\n";
+
       string query;
+      cout << "\nChoice : ";
+
       while(true)
       {
-        cout << "\n1. First Name \n";
-        cout << "2. Last Name \n";
-        cout << "3. Phone Number\n";
-        cout << "\nChoice : ";
         cin >> query;
-        
         if(query == "1" || query == "2" || query == "3")
           break;
         else 
@@ -156,7 +196,8 @@ int main()
       currentQuery--;
 
       Query = currentQuery;
-      contact.SearchContact(key,currentQuery,search_choice[0] - '0');
+      int index = contact.SearchContact(key,currentQuery,search_choice[0] - '0');
+      contact.print_Search_Result(index, currentQuery, key);
     }
     else if(choice == "3") break;
     else cout << "\nInvalid Choice!\n";
