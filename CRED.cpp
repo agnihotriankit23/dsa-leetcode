@@ -9,11 +9,20 @@ bool comparator(vector<string> &A, vector<string> &B)
   return A[Query] < B[Query];
 }
 
-vector<vector<string>> Contact_List;
-
 class Contact_Manager
 {
+  vector<vector<string>> Contact_List; 
   public :
+    Contact_Manager()
+    {
+      Contact_List = vector<vector<string>>(1,vector<string>(3));
+    }
+
+    Contact_Manager()
+    {
+
+    }
+
     void addContact()
     {
       string firstName, lastName, phone;
@@ -34,14 +43,15 @@ class Contact_Manager
       int index = -1;
 
       transform(key.begin(), key.end(), key.begin(), ::tolower);
-      
+
       if(is_updated[query]) sort(Contact_List.begin(), Contact_List.end(), comparator);
-      for(int i=0;i<3;i++){
-        if(i!=query){
-            is_updated[i]=true;
-        }
-      }
       is_updated[query] = false;
+      
+      for(int i = 0; i < 3; i++)
+      {
+        if(i != query)
+          is_updated[query] = true;
+      }
 
       while(start <= end)
       {
@@ -72,7 +82,7 @@ class Contact_Manager
     {
       if(index == -1)
       {
-        cout << "TOTAL : " << 0 << endl;
+        cout << "Not Found! \nTOTAL : " << 0 << endl;
         return;
       }
 
@@ -102,7 +112,6 @@ class Contact_Manager
         }
         else break;
       }
-      cout << "\nTOTAL : " << total << endl;
     }
   
 };
