@@ -105,29 +105,29 @@ int main()
     cout << "2. SEARCH\n";
     cout << "3. EXIT\n";
 
-    int choice;
+    string choice;
     cout << "\nChoice : ";
     cin >> choice;
 
     Contact_Manager contact;
 
-    if(choice == 1)
+    if(choice == "1")
     {
       contact.addContact();
       is_updated[0] = is_updated[1] = is_updated[2] = true;
     }
-    else if(choice == 2)
+    else if(choice == "2")
     {
       cout << "\n1. COMPLETE SEARCH \n";
       cout << "2. PREFIX SEARCH\n";
 
-      int search_choice;
+      string search_choice;
       cout << "\nChoice : ";
 
       while(true)
       {
         cin >> search_choice;
-        if(search_choice == 1 || search_choice == 2)
+        if(search_choice == "1" || search_choice == "2")
           break;
         else 
           cout << "\nINVALID CHOICE!\n";
@@ -137,13 +137,13 @@ int main()
       cout << "2. Last Name \n";
       cout << "3. Phone Number\n";
 
-      int query;
+      string query;
       cout << "\nChoice : ";
 
       while(true)
       {
         cin >> query;
-        if(query == 1 || query == 2 || query == 3)
+        if(query == "1" || query == "2" || query == "3")
           break;
         else 
           cout << "\nINVALID CHOICE!\n";
@@ -154,11 +154,13 @@ int main()
       cin >> key;
 
       cout << "\n";
-      query--;
-      Query = query;
-      contact.SearchContact(key,query,search_choice);
+      int currentQuery = query[0] - '0';
+      currentQuery--;
+
+      Query = currentQuery;
+      contact.SearchContact(key,currentQuery,search_choice[0] - '0');
     }
-    else if(choice == 3) break;
+    else if(choice == "3") break;
     else cout << "\nInvalid Choice!\n";
   }
   return 0;
