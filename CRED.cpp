@@ -7,11 +7,17 @@ bool comparator(vector<string> &A, vector<string> &B)
   return A[Query] < B[Query];
 }
 
-vector<vector<string>> Contact_List;
+
 
 class Contact_Manager
 {
+  vector<vector<string>> Contact_List;
   public :
+    Contact_Manager()
+    {
+      Contact_List = vector<vector<string>>();
+    }
+
     void addContact()
     {
       string firstName, lastName, phone;
@@ -30,10 +36,9 @@ class Contact_Manager
     {
       int start = 0, end = Contact_List.size() - 1;
       int index;
-      
+
       transform(key.begin(), key.end(), key.begin(), ::tolower);
       sort(Contact_List.begin(), Contact_List.end(), comparator);
-      
       while(start <= end)
       {
         int mid = start + (end - start) / 2;
@@ -95,6 +100,7 @@ int main()
     cout << "3. EXIT\n";
 
     int choice;
+    cout << "\nChoice : ";
     cin >> choice;
 
     Contact_Manager contact;
@@ -106,6 +112,7 @@ int main()
       cout << "2. PREFIX SEARCH\n";
 
       int search_choice;
+      cout << "\nChoice : ";
       cin >> search_choice;
 
       while(true)
@@ -123,6 +130,7 @@ int main()
       cout << "3. Phone Number\n";
 
       int query;
+      cout << "\nChoice : ";
       cin >> query;
 
       while(true)
