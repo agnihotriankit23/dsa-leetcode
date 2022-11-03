@@ -97,6 +97,7 @@ class Contact_Manager
         }
         else break;
       }
+      cout << "\nTOTAL : " << total << endl;
     }
   
 };
