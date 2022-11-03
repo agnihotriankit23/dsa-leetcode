@@ -118,15 +118,14 @@ int main()
     }
     else if(choice == "2")
     {
-      cout << "\n1. COMPLETE SEARCH \n";
-      cout << "2. PREFIX SEARCH\n";
-
       string search_choice;
-
       while(true)
       {
+        cout << "\n1. COMPLETE SEARCH \n";
+        cout << "2. PREFIX SEARCH\n";
         cout << "\nChoice : ";
         cin >> search_choice;
+        
         if(search_choice == "1" || search_choice == "2")
           break;
         else 
